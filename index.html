@@ -13,8 +13,9 @@
       <div class="controls">
         <label for="email">
           <span>Email</span>
-          <input id="email" type="email" name="email" />
+          <input id="email" type="email" name="email" required />
         </label>
+        <ul class="email-errors"></ul>
       </div>
       <div class="controls">
         <label for="country">
@@ -29,26 +30,43 @@
         </label>
       </div>
       <div class="controls">
-        <label for="post-code">
+        <label for="postcode">
           <span>Post Code</span>
-          <input type="text" name="post-code" />
+          <input
+            id="postcode"
+            type="text"
+            name="postcode"
+            required
+            pattern="^\w\d{2}\s?\d\w{2}$"
+          />
         </label>
+        <ul class="postcode-errors"></ul>
       </div>
       <div class="controls">
         <label for="password">
           <span>Password</span>
-          <input id="password" name="password" type="password" />
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            pattern="(?=.*?[a-z].*?)(?=.*?[A-Z].*?)(.*?[0-9].*?)"
+            minlength="6"
+          />
         </label>
+        <ul class="password-errors"></ul>
       </div>
       <div class="controls">
         <label for="password-confirmation">
           <span>Password Confirmation</span>
           <input
+            id="password-confirmation"
             type="password"
             name="password-confirmation"
-            id="password-confirmation"
+            required
           />
         </label>
+        <ul class="password-confirmation-errors"></ul>
       </div>
       <div class="controls">
         <input type="submit" id="submit" value="Sign Up" />
