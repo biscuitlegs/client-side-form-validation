@@ -6,7 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Client Side Form Validation</title>
     <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./reset.css" />
   </head>
-  <body></body>
+  <body>
+    <form novalidate>
+      <div class="controls">
+        <label for="email">
+          <span>Email</span>
+          <input id="email" type="email" name="email" />
+        </label>
+      </div>
+      <div class="controls">
+        <label for="country">
+          <span>Country</span>
+          <select name="country" id="country">
+            <option value="united-states">United States</option>
+            <option value="united-kingdom">United Kingdom</option>
+            <option value="germany">Gemany</option>
+            <option value="france">France</option>
+            <option value="belgium">Belgium</option>
+          </select>
+        </label>
+      </div>
+      <div class="controls">
+        <label for="post-code">
+          <span>Post Code</span>
+          <input type="text" name="post-code" />
+        </label>
+      </div>
+      <div class="controls">
+        <label for="password">
+          <span>Password</span>
+          <input id="password" name="password" type="password" />
+        </label>
+      </div>
+      <div class="controls">
+        <label for="password-confirmation">
+          <span>Password Confirmation</span>
+          <input
+            type="password"
+            name="password-confirmation"
+            id="password-confirmation"
+          />
+        </label>
+      </div>
+      <div class="controls">
+        <input type="submit" id="submit" value="Sign Up" />
+      </div>
+    </form>
+  </body>
   <script src="./main.js"></script>
 </html>

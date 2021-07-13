@@ -1,0 +1,31 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 70%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+form label span {
+  margin: 5px 0;
+}
+
+#submit {
+  width: 100%;
+  margin-top: 10px;
+}
