@@ -19,69 +19,91 @@
     />
   </head>
   <body>
-    <form novalidate>
-      <div class="controls">
-        <label for="email">
-          <span>Email</span>
-          <input id="email" type="email" name="email" required />
-        </label>
-        <ul class="email-errors"></ul>
+    <div class="columns">
+      <div class="left">
+        <h1 class="title">Create Account</h1>
+        <form class="authentication-form" novalidate>
+          <div class="controls">
+            <label for="email">
+              <span>Email</span>
+              <input id="email" type="email" name="email" required />
+            </label>
+            <ul class="email-errors"></ul>
+          </div>
+          <div class="controls">
+            <label for="country">
+              <span>Country</span>
+              <select name="country" id="country">
+                <option value="united-states">United States</option>
+                <option value="united-kingdom">United Kingdom</option>
+                <option value="germany">Gemany</option>
+                <option value="france">France</option>
+                <option value="belgium">Belgium</option>
+              </select>
+              <i class="bi bi-check-circle input-icon"></i>
+              <i class="bi bi-chevron-down select-icon"></i>
+            </label>
+          </div>
+          <div class="controls">
+            <label for="postcode">
+              <span>Post Code</span>
+              <input
+                id="postcode"
+                type="text"
+                name="postcode"
+                required
+                pattern="^\w\d{2}\s?\d\w{2}$"
+              />
+            </label>
+            <ul class="postcode-errors"></ul>
+          </div>
+          <div class="controls">
+            <label for="password">
+              <span>Password</span>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                pattern="(?=.*?[a-z].*?)(?=.*?[A-Z].*?)(.*?[0-9].*?)"
+                minlength="6"
+              />
+            </label>
+            <ul class="password-errors"></ul>
+          </div>
+          <div class="controls">
+            <label for="password-confirmation">
+              <span>Password Confirmation</span>
+              <input
+                id="password-confirmation"
+                type="password"
+                name="password-confirmation"
+                required
+              />
+            </label>
+            <ul class="password-confirmation-errors"></ul>
+          </div>
+          <div class="controls">
+            <label for="terms" id="terms-label">
+              <input type="checkbox" name="terms-and-privacy" id="terms" />
+              <span class="checkmark">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span
+                >I agree to the <a href="#">Terms</a> and
+                <a href="#">Privacy Policy</a>.</span
+              >
+            </label>
+          </div>
+          <div class="controls">
+            <input type="submit" id="submit" value="Sign Up" />
+          </div>
+        </form>
       </div>
-      <div class="controls">
-        <label for="country">
-          <span>Country</span>
-          <select name="country" id="country">
-            <option value="united-states">United States</option>
-            <option value="united-kingdom">United Kingdom</option>
-            <option value="germany">Gemany</option>
-            <option value="france">France</option>
-            <option value="belgium">Belgium</option>
-          </select>
-        </label>
+      <div class="right">
+        <img src="./images/undraw_enter_uhqk.svg" alt="" />
       </div>
-      <div class="controls">
-        <label for="postcode">
-          <span>Post Code</span>
-          <input
-            id="postcode"
-            type="text"
-            name="postcode"
-            required
-            pattern="^\w\d{2}\s?\d\w{2}$"
-          />
-        </label>
-        <ul class="postcode-errors"></ul>
-      </div>
-      <div class="controls">
-        <label for="password">
-          <span>Password</span>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            required
-            pattern="(?=.*?[a-z].*?)(?=.*?[A-Z].*?)(.*?[0-9].*?)"
-            minlength="6"
-          />
-        </label>
-        <ul class="password-errors"></ul>
-      </div>
-      <div class="controls">
-        <label for="password-confirmation">
-          <span>Password Confirmation</span>
-          <input
-            id="password-confirmation"
-            type="password"
-            name="password-confirmation"
-            required
-          />
-        </label>
-        <ul class="password-confirmation-errors"></ul>
-      </div>
-      <div class="controls">
-        <input type="submit" id="submit" value="Sign Up" />
-      </div>
-    </form>
+    </div>
   </body>
   <script src="./main.js"></script>
 </html>
