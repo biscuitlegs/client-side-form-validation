@@ -43,6 +43,38 @@ function showError(error) {
   error.classList.add("visible");
 }
 
+function createCheckIcon() {
+  const icon = document.createElement("i");
+  icon.classList.add("bi", "bi-check-circle", "input-icon");
+
+  return icon;
+}
+
+function createXIcon() {
+  const icon = document.createElement("i");
+  icon.classList.add("bi", "bi-x-circle", "input-icon");
+
+  return icon;
+}
+
+function removeIcons(input) {
+  const label = input.parentElement;
+  const icons = label.querySelectorAll(".input-icon");
+  icons.forEach((icon) => label.removeChild(icon));
+}
+
+function updateIcon(input) {
+  removeIcons(input);
+  const label = input.parentElement;
+  if (!input.validity.valid) {
+    const xIcon = createXIcon();
+    label.appendChild(xIcon);
+  } else {
+    const checkIcon = createCheckIcon();
+    label.appendChild(checkIcon);
+  }
+}
+
 function updateEmailErrors() {
   resetErrors(emailErrors);
   if (emailInput.validity.valueMissing) {
@@ -96,6 +128,7 @@ function updatePasswordErrors() {
       "Password confirmation must match password."
     );
   }
+  updateIcon(passwordConfirmationInput);
 }
 
 function updatePasswordConfirmationErrors() {
@@ -112,6 +145,18 @@ function updatePasswordConfirmationErrors() {
       "Password confirmation must match password."
     );
   }
+  updateIcon(passwordConfirmationInput);
+}
+
+function initializeInputs() {
+  updateEmailErrors();
+  updatePostcodeErrors();
+  updatePasswordErrors();
+  updatePasswordConfirmationErrors();
+  updateIcon(emailInput);
+  updateIcon(postcodeInput);
+  updateIcon(passwordInput);
+  updateIcon(passwordConfirmationInput);
 }
 
 form.addEventListener("submit", (event) => {
@@ -121,6 +166,10 @@ form.addEventListener("submit", (event) => {
   updatePostcodeErrors();
   updatePasswordErrors();
   updatePasswordConfirmationErrors();
+  updateIcon(emailInput);
+  updateIcon(postcodeInput);
+  updateIcon(passwordInput);
+  updateIcon(passwordConfirmationInput);
 });
 
 emailInput.addEventListener("input", updateEmailErrors);
@@ -130,3 +179,11 @@ passwordConfirmationInput.addEventListener(
   "input",
   updatePasswordConfirmationErrors
 );
+emailInput.addEventListener("input", () => updateIcon(emailInput));
+postcodeInput.addEventListener("input", () => updateIcon(postcodeInput));
+passwordInput.addEventListener("input", () => updateIcon(passwordInput));
+passwordConfirmationInput.addEventListener("input", () =>
+  updateIcon(passwordConfirmationInput)
+);
+
+initializeInputs();

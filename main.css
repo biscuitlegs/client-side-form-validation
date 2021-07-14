@@ -2,10 +2,20 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 form {
+  --red: #e76f51;
+  --grey: #adb5bd;
+  --green: #2a9d8f;
+  --blue: #0d6efd;
+  --light-red: #e49581;
+  --light-green: #4ca096;
+  --dark-red: #d8411b;
+  --dark-blue: #0c61e0;
+  --darker-blue: #0a53c2;
+  --font-family: Poppins, sans-serif;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -19,6 +29,8 @@ form label {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+  font-family: var(--font-family);
+  position: relative;
 }
 
 form label span {
@@ -28,6 +40,21 @@ form label span {
 #submit {
   width: 100%;
   margin-top: 10px;
+  color: #ffffff;
+  background-color: var(--blue);
+  border: none;
+  border-radius: 4px;
+  padding: 0.8em;
+  font-family: var(--font-family);
+}
+
+#submit:hover {
+  background-color: var(--dark-blue);
+  cursor: pointer;
+}
+
+#submit:active {
+  background-color: var(--darker-blue);
 }
 
 .visible {
@@ -36,4 +63,59 @@ form label span {
 
 .error {
   white-space: pre-line;
+  font-family: var(--font-family);
+  margin: 0.4em 0;
+  color: var(--dark-red);
+}
+
+input:not(input[type="submit"]) {
+  border: 2px solid var(--green);
+  border-radius: 4px;
+  padding: 0.5em;
+  font-family: var(--font-family);
+}
+
+input:not(input[type="submit"]):focus {
+  outline: 2px solid var(--light-green);
+}
+
+input:not(input[type="submit"]):invalid {
+  border-color: var(--red);
+}
+
+input:not(input[type="submit"]):invalid:focus {
+  outline: 2px solid var(--light-red);
+}
+
+select {
+  padding: 0.5em;
+  border: 2px solid var(--green);
+  border-radius: 4px;
+  font-family: var(--font-family);
+}
+
+select:focus {
+  outline: 2px solid var(--light-green);
+}
+
+.input-icon {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  right: 15px;
+  color: var(--red);
+}
+
+.controls {
+  position: relative;
+}
+
+select + .input-icon {
+  right: 25px;
+  color: var(--green);
+}
+
+input:valid + .input-icon {
+  color: var(--green);
 }
