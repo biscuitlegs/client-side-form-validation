@@ -13,13 +13,13 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  overflow: scroll;
 }
 
 .authentication-form {
   display: flex;
   flex-direction: column;
   margin: 0 4em;
+  margin-bottom: 4em;
 }
 
 .authentication-form label {
@@ -90,7 +90,7 @@ input:valid + .input-icon {
 .select-icon {
   position: absolute;
   top: 60%;
-  right: 6px;
+  right: 15px;
 }
 
 select {
@@ -107,7 +107,7 @@ select:focus {
 }
 
 select + .input-icon {
-  right: 30px;
+  right: 45px;
   color: var(--dark-blue);
 }
 
@@ -115,7 +115,6 @@ select + .input-icon {
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  width: 23em;
   align-items: center;
 }
 
@@ -159,13 +158,10 @@ select + .input-icon {
 .columns {
   display: flex;
   flex-direction: row;
-  width: 100vw;
-  height: 100vh;
 }
 
 .left,
 .right {
-  position: relative;
   flex: 1;
 }
 
@@ -193,6 +189,7 @@ select + .input-icon {
   text-align: center;
   margin-bottom: 0.5em;
   color: var(--blue);
+  margin-top: 1em;
 }
 
 a {
@@ -219,4 +216,22 @@ a:active {
   margin: 0.4em 0;
   color: var(--dark-red);
   font-size: 13px;
+}
+
+@media screen and (max-width: 1000px) {
+  .right {
+    display: none;
+  }
+  .columns {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .authentication-form label {
+    margin-top: 40px;
+  }
+
+  .title {
+    font-size: 50px;
+  }
 }
