@@ -5,6 +5,7 @@ const passwordInput = document.querySelector("#password");
 const passwordConfirmationInput = document.querySelector(
   "#password-confirmation"
 );
+const termsInput = document.querySelector("#terms");
 
 const emailErrors = document.querySelector(".email-errors");
 const postcodeErrors = document.querySelector(".postcode-errors");
@@ -12,6 +13,7 @@ const passwordErrors = document.querySelector(".password-errors");
 const passwordConfirmationErrors = document.querySelector(
   ".password-confirmation-errors"
 );
+const termsErrors = document.querySelector(".terms-errors");
 
 function passwordMatchesConfirmation(password, confirmation) {
   let matches = false;
@@ -148,11 +150,26 @@ function updatePasswordConfirmationErrors() {
   updateIcon(passwordConfirmationInput);
 }
 
+function updateTermsErrors() {
+  resetErrors(termsErrors);
+  termsInput.setCustomValidity("");
+  if (!termsInput.checked) {
+    const error = createError(
+      "You must agree to the terms and privacy policy to proceed."
+    );
+    termsErrors.appendChild(error);
+    termsInput.setCustomValidity(
+      "You must agree to the terms and privacy policy to proceed."
+    );
+  }
+}
+
 function initializeInputs() {
   updateEmailErrors();
   updatePostcodeErrors();
   updatePasswordErrors();
   updatePasswordConfirmationErrors();
+  updateTermsErrors();
   updateIcon(emailInput);
   updateIcon(postcodeInput);
   updateIcon(passwordInput);
@@ -166,6 +183,7 @@ form.addEventListener("submit", (event) => {
   updatePostcodeErrors();
   updatePasswordErrors();
   updatePasswordConfirmationErrors();
+  updateTermsErrors();
   updateIcon(emailInput);
   updateIcon(postcodeInput);
   updateIcon(passwordInput);
@@ -179,6 +197,8 @@ passwordConfirmationInput.addEventListener(
   "input",
   updatePasswordConfirmationErrors
 );
+termsInput.addEventListener("input", () => updateTermsErrors());
+
 emailInput.addEventListener("input", () => updateIcon(emailInput));
 postcodeInput.addEventListener("input", () => updateIcon(postcodeInput));
 passwordInput.addEventListener("input", () => updateIcon(passwordInput));
